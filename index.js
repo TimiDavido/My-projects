@@ -1,12 +1,46 @@
+const decreasebtn = document.getElementById("decreasebtn");
+const resetbtn = document.getElementById("resetbtn");
+const increasebtn = document.getElementById("increasebtn");
+const countlabel = document.getElementById("countlabel");
 
+let count = 0;
+increasebtn.onclick = function () {
+  count++;
+  countlabel.textContent = count;
+};
 
-const PI = 3.1459;
-let radius;
-let circumference;
+decreasebtn.onclick = function () {
+  count--;
+  countlabel.textContent = count;
+};
 
-document.getElementById("mysubmit").onclick = function(){
-    radius = document.getElementById("myinput").value
-    radius = Number(radius)
-    circumference = 2 * PI * radius;
-    document.getElementById("myh1").textContent = circumference + "cm";
-} 
+resetbtn.onclick = function () {
+  count = 0;
+  countlabel.textContent = count;
+};
+
+// const handleIncrease = () => {
+//   count++;
+//   countlabel.textContent = count;
+//   console.log(count);
+// };
+
+// const handleDecrease = () => {
+//   if (!count <= 0) {
+//     count--;
+//   } else {
+//     return count;
+//   }
+//   countlabel.textContent = count;
+//   console.log(count);
+// };
+
+// const handleReset = () => {
+//   count = 0;
+//   countlabel.textContent = count;
+//   console.log(count);
+// };
+
+// increasebtn.addEventListener("click", handleIncrease);
+// decreasebtn.addEventListener("click", handleDecrease);
+// resetbtn.addEventListener("click", handleReset);
