@@ -1,46 +1,31 @@
-const decreasebtn = document.getElementById("decreasebtn");
-const resetbtn = document.getElementById("resetbtn");
-const increasebtn = document.getElementById("increasebtn");
-const countlabel = document.getElementById("countlabel");
+const minNum = 1;
+const maxNum = 100;
 
-let count = 0;
-increasebtn.onclick = function () {
-  count++;
-  countlabel.textContent = count;
-};
+const answer = Math.floor(Math.random() * 100);
 
-decreasebtn.onclick = function () {
-  count--;
-  countlabel.textContent = count;
-};
+let attempts = 0;
+let guess;
+let running = true;
 
-resetbtn.onclick = function () {
-  count = 0;
-  countlabel.textContent = count;
-};
+while (running) {
+  guess = window.prompt(`Guess a number between ${minNum} - ${maxNum}`);
+  guess = Number(guess);
 
-// const handleIncrease = () => {
-//   count++;
-//   countlabel.textContent = count;
-//   console.log(count);
-// };
-
-// const handleDecrease = () => {
-//   if (!count <= 0) {
-//     count--;
-//   } else {
-//     return count;
-//   }
-//   countlabel.textContent = count;
-//   console.log(count);
-// };
-
-// const handleReset = () => {
-//   count = 0;
-//   countlabel.textContent = count;
-//   console.log(count);
-// };
-
-// increasebtn.addEventListener("click", handleIncrease);
-// decreasebtn.addEventListener("click", handleDecrease);
-// resetbtn.addEventListener("click", handleReset);
+  if (isNaN(guess)) {
+    window.alert("Please enter a valid number");
+  } else if (guess < minNum || guess > maxNum) {
+    window.alert("Please enter a number from 1- 100 you FOOL");
+  } else {
+    attempts++;
+    if (guess < answer) {
+      window.alert("Too low try again");
+    } else if (guess > answer) {
+      window.alert("Too high, Try again");
+    } else {
+      window.alert(
+        `Correct The answer is ${answer}. It took you ${attempts} attempts`
+      );
+      running = false;
+    }
+  }
+}
